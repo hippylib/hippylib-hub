@@ -18,7 +18,7 @@ Here a list of instructions:
 2. (One time only) Clone the hippylib-hub repository
 
     ```
-    git clone git@bitbucket.org:hippylibdev/hippylib-hub.git
+    git clone git@github.com:hippylib/hippylib-hub.git
     ```
     
 3. (One time only) Go inside the `hippylib-hub` folder, and clone `hippylib`:

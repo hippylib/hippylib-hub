@@ -214,7 +214,8 @@
 # The notebook directory for the single-user server
 #
 # `~` will be expanded to the user's home directory
-c.Spawner.notebook_dir = '~/hippylib/tutorial'
+c.Spawner.default_url = "/tree"
+c.Spawner.notebook_dir = '~/'
 
 # Timeout (in seconds) before giving up on the spawner.
 #
@@ -228,7 +229,7 @@ c.Spawner.notebook_dir = '~/hippylib/tutorial'
 c.Spawner.env_keep = ['SLEPC_VERSION', 'PYPI_FENICS_VERSION', 'OPENBLAS_NUM_THREADS', 'SLEPC4PY_VERSION',
                      'SWIG_VERSION', 'PETSC4PY_VERSION', 'PETSC_VERSION', 'MSHR_VERSION', 'PATH', 
                      'MPI4PY_VERSION', 'TRILINOS_VERSION', 'PYBIND11_VERSION', 'DOLFIN_VERSION', 'FENICS_PYTHON',
-                     'SLEPC_DIR', 'PETSC_DIR'] 
+                     'SLEPC_DIR', 'PETSC_DIR', 'PYTHONPATH', 'HIPPYLIB_BASE_DIR'] 
 
 # The IP address (or hostname) the single-user server should listen on
 # c.Spawner.ip = 'localhost'
