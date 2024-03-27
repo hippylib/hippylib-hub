@@ -5,6 +5,9 @@ USER root
 
 RUN   apt-get update
 RUN   apt-get install -yy npm
+RUN   npm cache clean -f
+RUN   npm install -g n
+RUN   n 14.0.0 
 RUN   npm install -g configurable-http-proxy@4.2.3
 RUN   sudo pip3 install pip --upgrade
 RUN   pip3 install jupyterhub jupyterlab
