@@ -285,7 +285,7 @@ c.Spawner.env_keep = ['SLEPC_VERSION', 'PYPI_FENICS_VERSION', 'OPENBLAS_NUM_THRE
 #
 # If unspecified, only the user that launches the server will be admin.
 c.Authenticator.admin_users = {'fenics'}
-
+c.Authenticator.allow_all = True
 #------------------------------------------------------------------------------
 # LocalAuthenticator configuration
 #------------------------------------------------------------------------------

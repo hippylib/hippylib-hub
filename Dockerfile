@@ -1,21 +1,25 @@
-FROM quay.io/fenicsproject/stable:2019.1.0.r3
+FROM ghcr.io/scientificcomputing/fenics:2024-05-28 
 LABEL authors="U. Villa"
 
 USER root
 
+RUN   ln -s /usr/lib/python3/dist-packages/ufl_legacy/ /usr/lib/python3/dist-packages/ufl
 RUN   apt-get update
+RUN   apt-get install sudo
 RUN   apt-get install -yy npm
 RUN   npm cache clean -f
 RUN   npm install -g n
 RUN   n 14.0.0 
 RUN   npm install -g configurable-http-proxy@4.2.3
 RUN   sudo pip3 install pip --upgrade
-RUN   pip3 install jupyterhub jupyterlab
+RUN   pip3 install jupyterhub jupyterlab notebook
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 
-
+RUN useradd fenics -m -s /bin/bash
+RUN sudo usermod -a -G sudo fenics
+RUN echo "fenics:docker" | chpasswd fenics
 USER fenics
 
 # Install hIPPYlib
@@ -38,8 +42,7 @@ ENV HIPPYLIB_BASE_DIR /home/fenics/hippylib
 
 USER root
 
-RUN python make-users.py
+RUN cd /home/fenics && python3 make-users.py
 
 WORKDIR /home/fenics/
-ENTRYPOINT ["/sbin/my_init","--"]
 CMD ["jupyterhub"]
